@@ -1,0 +1,116 @@
+# Niche configuration for the weekly YouTube intelligence report.
+# Edit freely — every run reads this file fresh.
+
+niche_name: "AI & AI Automation"
+
+# Your own channel (optional). Set a channel ID (starts with UC...) or @handle
+# to get a "you vs. the niche" benchmark slide.
+my_channel: ""
+
+# Channels you always want tracked, regardless of search results.
+# Accepts @handles or UC... channel IDs.
+seed_channels:
+  - "@nateherk"
+  - "@NickSaraev"
+  - "@LiamOttley"
+  - "@aiexplained-official"
+  - "@mreflow"
+  - "@AllAboutAI"
+  - "@ColeMedin"
+  - "@DavidOndrej"
+  - "@matthew_berman"
+  - "@WesRoth"
+  - "@JulianGoldieSEO"
+  - "@AIJasonZ"
+  - "@TwoMinutePapers"
+  - "@theAIsearch"
+  - "@n8n-io"
+
+# Search queries used to discover trending videos + new channels.
+# Each costs 100 YouTube API units (default daily allowance ~100 searches).
+search_keywords:
+  - "AI automation"
+  - "n8n tutorial"
+  - "AI agents"
+  - "Claude Code"
+  - "make.com automation"
+  - "AI automation agency"
+  - "build AI agent no code"
+  - "ChatGPT new features"
+  - "Claude AI"
+  - "Gemini AI"
+  - "vibe coding"
+  - "MCP server"
+  - "AI tools for business"
+  - "AI news this week"
+  - "Zapier AI"
+  - "AI workflow automation"
+  - "OpenAI new model"
+  - "AI coding agent"
+  - "automate with AI"
+  - "local LLM"
+
+# Words that mark a video as "in niche". Matched case-insensitively against
+# title + tags + first part of description. Channels whose recent uploads are
+# mostly off-niche are dropped (seed channels are always kept).
+niche_terms:
+  - "ai"
+  - "a.i."
+  - "artificial intelligence"
+  - "automation"
+  - "automate"
+  - "agent"
+  - "agentic"
+  - "llm"
+  - "gpt"
+  - "chatgpt"
+  - "openai"
+  - "claude"
+  - "anthropic"
+  - "gemini"
+  - "grok"
+  - "llama"
+  - "deepseek"
+  - "mistral"
+  - "n8n"
+  - "make.com"
+  - "zapier"
+  - "mcp"
+  - "cursor"
+  - "copilot"
+  - "prompt"
+  - "machine learning"
+  - "vibe coding"
+  - "lovable"
+  - "perplexity"
+  - "midjourney"
+  - "sora"
+  - "veo"
+  - "rag"
+  - "workflow"
+
+discovery:
+  lookback_days_search: 30      # search window for discovery queries
+  results_per_keyword: 50       # max 50 (one API page)
+  min_subscribers: 5000         # ignore tiny channels found via search
+  max_channels: 120             # cap on tracked channels per run
+  min_niche_share: 0.3          # fraction of recent uploads that must be in-niche
+
+analysis:
+  window_days: 30               # video window analysed each run
+  this_week_days: 7             # "this week" = published in the last N days
+  top_n_transcripts: 15         # transcripts pulled for the top outliers
+  transcript_word_limit: 2500   # opening words per transcript sent to Claude (hooks + structure)
+  top_n_comments_videos: 25     # videos to pull comments from
+  comments_per_video: 50
+  shorts_max_seconds: 180       # Shorts can be up to 3 min
+
+claude:
+  model: "claude-opus-5-5"
+  classify_effort: "low"
+  synthesis_effort: "high"
+
+delivery:
+  # Recipient address is read from REPORT_EMAIL in .env (kept out of this file).
+  drive_folder_name: "YouTube Niche Reports"
+  subject_prefix: "AI YouTube Pulse"

@@ -1,0 +1,16 @@
+.env
+credentials.json
+token.json
+.tmp/*
+!.tmp/.gitkeep
+__pycache__/
+*.pyc
+.venv/
+
+node_modules/
+
+# persistent run history (local data) and logs
+data/*.sqlite
+*.log
+# local Claude Code tooling
+.claude/
